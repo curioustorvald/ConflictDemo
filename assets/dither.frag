@@ -57,7 +57,19 @@ void main(void) {
 
     vec2 entry = mod(gl_FragCoord.xy, vec2(bayerSize, bayerSize));
 
-    gl_FragColor = nearestColour(inColor + spread * (bayer[int(entry.y) * int(bayerSize) + int(entry.x)] / bayerDivider - 0.5));
+    vec4 outcolor = nearestColour(inColor + spread * (bayer[int(entry.y) * int(bayerSize) + int(entry.x)] / bayerDivider - 0.5));
+
+
+    // New addition: centre lines
+    if (
+            (v_texCoords.x >= 0.5 && v_texCoords.x - 0.5 <= 0.001) ||
+            (v_texCoords.y >= 0.5 && v_texCoords.y - 0.5 <= 0.001)
+    ) {
+        gl_FragColor = vec4(1 - outcolor.rgb, 1);
+    }
+    else {
+        gl_FragColor = outcolor;
+    }
 }
 
 /*

@@ -125,7 +125,7 @@ object TaskMain : Screen {
             ditherShader.setUniformf("bottomColor", gradTopCol.r, gradTopCol.g, gradTopCol.b)
             ditherShader.setUniformf("topColor", gradBottomCol.r, gradBottomCol.g, gradBottomCol.b)
             ditherShader.setUniformf("parallax", playerPosY / Gdx.graphics.height * 2f - 1f) // -1 .. 1
-            ditherShader.setUniformf("parallax_size", 0.16f) // -1 .. 1
+            ditherShader.setUniformf("parallax_size", 0.14f)
             fullscreenQuad.render(ditherShader, GL20.GL_TRIANGLES)
             ditherShader.end()
 
