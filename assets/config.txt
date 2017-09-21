@@ -1,0 +1,5 @@
+# Length of each stage, in microseconds (1 sec == 1000 ms)
+
+stageone=5000
+stagetwo=5000
+stagethree=10000

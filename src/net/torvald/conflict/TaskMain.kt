@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import net.torvald.terrarum.langpack.Lang
 import net.torvald.terrarumsansbitmap.gdx.GameFontBase
+import java.util.*
 
 /**
  * Created by minjaesong on 2017-09-18.
@@ -30,11 +31,11 @@ object TaskMain : Screen {
 
     private var runStage = 0 // 0: Not started, 1: First phase, 2: Second phase, 3: Third phase, 4: Result
     val RUNSTAGE_RESULT = 4
-    private val runTimes = floatArrayOf(5f, 5f, 10f)
+    private lateinit var runTimes: FloatArray
     private var timer = 0f
 
 
-    private val lissRadius = 180f // will draw lissajous figure
+    private val moveScale = 1.333f
     private var lissTheta = 0.0
 
 
@@ -45,6 +46,17 @@ object TaskMain : Screen {
 
     init {
         resetGame()
+
+
+        // load stage running times from config file
+        val prop = Properties()
+        prop.load(Gdx.files.internal("assets/config.txt").reader())
+
+        runTimes = floatArrayOf(0f,
+                prop.getProperty("stageone").toInt() / 1000f,
+                prop.getProperty("stagetwo").toInt() / 1000f,
+                prop.getProperty("stagethree").toInt() / 1000f
+        )
     }
 
 
@@ -53,6 +65,7 @@ object TaskMain : Screen {
         playerPosY = Gdx.graphics.height / 2f
         lissTheta = 0.0
         timer = 0f
+        rndBit = Random().nextInt(8)
     }
 
     override fun hide() {
@@ -93,10 +106,27 @@ object TaskMain : Screen {
 
 
         playerTex = Texture(Gdx.files.internal("assets/player_by_Yawackhary.tga"))
+
+        rndBit = Random().nextInt(8)
     }
 
+    private val slownessFactor = 2.0
+    private var rndBit = 0 // 0bxxx / when updating position: 0: -=, 1: +=
+
     override fun render(delta: Float) {
-        Gdx.gl.glClearColor(.235f, .235f, .235f, 1f)
+        fun proceedToNextStage() {
+            if (timer >= runTimes[runStage]) {
+                runStage += 1
+                timer = 0f
+            }
+        }
+
+        if (runStage == 0) {
+            Gdx.gl.glClearColor(.235f, .235f, .235f, 1f)
+        }
+        else {
+            Gdx.gl.glClearColor(.933f, .933f, .933f, 1f)
+        }
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
         Gdx.gl.glEnable(GL20.GL_TEXTURE_2D)
         Gdx.gl.glEnable(GL20.GL_BLEND)
@@ -139,6 +169,29 @@ object TaskMain : Screen {
 
 
             // UPDATE
+            if (runStage == 1) {
+                playerPosX += (if (rndBit and 1 == 0) 1 else -1) *
+                        moveScale * Math.cos((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+
+                proceedToNextStage()
+            }
+            else if (runStage == 2) {
+                //playerPosX = Gdx.graphics.width / 2f
+                playerPosY += (if (rndBit and 1 == 0) 1 else -1) *
+                        moveScale * Math.cos((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+
+                proceedToNextStage()
+
+            }
+            else if (runStage == 3) {
+                // TODO lissajous
+                playerPosX += (if (rndBit and 1 == 0) 1 else -1) *
+                        moveScale * Math.sin((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+                playerPosY += (if (rndBit and 1 == 0) 1 else -1) *
+                        moveScale * Math.cos((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+
+                proceedToNextStage()
+            }
 
 
 
@@ -166,8 +219,8 @@ object TaskMain : Screen {
     }
 
     class ConflictInputProcessor : InputProcessor {
-        private var oldMouseX = -1
-        private var oldMouseY = -1
+        private var oldMouseX = -2
+        private var oldMouseY = -2
 
         override fun touchUp(p0: Int, p1: Int, p2: Int, p3: Int): Boolean {
             return false
@@ -175,8 +228,8 @@ object TaskMain : Screen {
 
         override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
             if (runStage > 0) {
-                if (oldMouseX == -1) oldMouseX = screenX // init, -1 is an placeholder value
-                if (oldMouseY == -1) oldMouseY = screenX // init, -1 is an placeholder value
+                if (oldMouseX == -2) oldMouseX = screenX // init, -1 is an placeholder value
+                if (oldMouseY == -2) oldMouseY = screenY // init, -1 is an placeholder value
 
                 playerPosX -= (oldMouseX - screenX).toFloat()
                 playerPosY += (oldMouseY - screenY).toFloat()
