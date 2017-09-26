@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import net.torvald.terrarum.langpack.Lang
 import net.torvald.terrarumsansbitmap.gdx.GameFontBase
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by minjaesong on 2017-09-18.
@@ -24,19 +25,20 @@ object TaskMain : Screen {
     private lateinit var batch: SpriteBatch
     private lateinit var shapeRenderer: ShapeRenderer
 
+    val halfW: Float; get() = Gdx.graphics.width / 2f
+    val halfH: Float; get() = Gdx.graphics.height / 2f
 
-    var playerPosX = Gdx.graphics.width / 2f
-    var playerPosY = Gdx.graphics.height / 2f
+    var playerPosX = halfW
+    var playerPosY = halfH
 
 
     private var runStage = 0 // 0: Not started, 1: First phase, 2: Second phase, 3: Third phase, 4: Result
     val RUNSTAGE_RESULT = 4
-    private lateinit var runTimes: FloatArray
+    private var runTimes: FloatArray
     private var timer = 0f
 
 
-    private val moveScale = 1.333f
-    private var lissTheta = 0.0
+    private val moveScale: Float; get() = Gdx.graphics.height / 9f
 
 
     private lateinit var font: GameFontBase
@@ -44,8 +46,14 @@ object TaskMain : Screen {
 
     private lateinit var fullscreenQuad: Mesh
 
+    private var mouseX = -2
+    private var mouseY = -2
+
+    private val pollingTime = 0.2f // in seconds
+    private var dataCaptureTimer = 0f
+
     init {
-        resetGame()
+        //resetGame()
 
 
         // load stage running times from config file
@@ -61,11 +69,14 @@ object TaskMain : Screen {
 
 
     fun resetGame() {
-        playerPosX = Gdx.graphics.width / 2f
-        playerPosY = Gdx.graphics.height / 2f
-        lissTheta = 0.0
+        playerPosX = halfW
+        playerPosY = halfH
         timer = 0f
-        rndBit = Random().nextInt(8)
+        rndBit = Random().nextInt(16)
+
+        runStage = 0
+
+        dataPoints.clear()
     }
 
     override fun hide() {
@@ -76,7 +87,7 @@ object TaskMain : Screen {
         batch = SpriteBatch()
         shapeRenderer = ShapeRenderer()
 
-        Gdx.input.inputProcessor = ConflictInputProcessor()
+        Gdx.input.inputProcessor = ConflictInputProcessor(this)
 
         font = GameFontBase("assets/fonts")
 
@@ -107,19 +118,37 @@ object TaskMain : Screen {
 
         playerTex = Texture(Gdx.files.internal("assets/player_by_Yawackhary.tga"))
 
-        rndBit = Random().nextInt(8)
+
+        resetGame()
     }
 
-    private val slownessFactor = 2.0
-    private var rndBit = 0 // 0bxxx / when updating position: 0: -=, 1: +=
+    private var rndBit = 0 // 0bxxxx / when updating position: 0: -=, 1: +=
+    private var slowdown = 2.0
+
+    private val dataPoints = ArrayList<ControlDataPoints>()
+
+    fun proceedToNextStage() {
+        if (timer >= runTimes[runStage] || runStage == 0) {
+            runStage += 1
+            timer = 0f
+            dataCaptureTimer = 0f
+
+
+            playerPosX = Gdx.graphics.width / 2f
+            playerPosY = Gdx.graphics.height / 2f
+        }
+    }
+
+    fun pollPosition() {
+        if (dataCaptureTimer >= pollingTime) {
+            dataCaptureTimer -= pollingTime
+
+
+            dataPoints.add(ControlDataPoints(playerPosX, playerPosY, runStage))
+        }
+    }
 
     override fun render(delta: Float) {
-        fun proceedToNextStage() {
-            if (timer >= runTimes[runStage]) {
-                runStage += 1
-                timer = 0f
-            }
-        }
 
         if (runStage == 0) {
             Gdx.gl.glClearColor(.235f, .235f, .235f, 1f)
@@ -145,7 +174,30 @@ object TaskMain : Screen {
         }
         // RESULT mode
         else if (runStage == RUNSTAGE_RESULT) {
+            shapeRenderer.inUse {
+                dataPoints.forEach {
+                    shapeRenderer.color = Color(0x404040ff)
+                    shapeRenderer.line(halfW, 0f, halfW, halfH * 2)
+                    shapeRenderer.line(0f, halfH, halfW * 2, halfH)
 
+
+                    shapeRenderer.color = when(it.stage) {
+                        1, 2 -> Color(0x00cc50ff)
+                        3 -> Color.RED
+                        else -> Color(0)
+                    }
+
+                    shapeRenderer.rect(it.x - 0.5f, it.y - 0.5f, 3f, 3f)
+                }
+            }
+
+
+            batch.inUse {
+                batch.color = Color(0x00ff55ff)
+
+                val fontWidth = font.getWidth(Lang["MENU_LABEL_RETURN_MAIN"]).ushr(1).shl(1) // ensure even-ness (as in even number)
+                font.draw(batch, Lang["MENU_LABEL_RETURN_MAIN"], Gdx.graphics.width.minus(fontWidth) / 2f, 10f)
+            }
         }
         // TASK mode
         else {
@@ -155,7 +207,7 @@ object TaskMain : Screen {
             ditherShader.setUniformf("bottomColor", gradTopCol.r, gradTopCol.g, gradTopCol.b)
             ditherShader.setUniformf("topColor", gradBottomCol.r, gradBottomCol.g, gradBottomCol.b)
             ditherShader.setUniformf("parallax", playerPosY / Gdx.graphics.height * 2f - 1f) // -1 .. 1
-            ditherShader.setUniformf("parallax_size", 0.14f)
+            ditherShader.setUniformf("parallax_size", 0.33f)//0.14f)
             fullscreenQuad.render(ditherShader, GL20.GL_TRIANGLES)
             ditherShader.end()
 
@@ -170,31 +222,39 @@ object TaskMain : Screen {
 
             // UPDATE
             if (runStage == 1) {
-                playerPosX += (if (rndBit and 1 == 0) 1 else -1) *
-                        moveScale * Math.cos((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+                playerPosX = mouseX + (if (rndBit and 1 == 0) 1 else -1) *
+                        moveScale * Math.sin(timer.div(slowdown)).toFloat()
+                playerPosY = mouseY.toFloat()
 
+                pollPosition()
                 proceedToNextStage()
             }
             else if (runStage == 2) {
-                //playerPosX = Gdx.graphics.width / 2f
-                playerPosY += (if (rndBit and 1 == 0) 1 else -1) *
-                        moveScale * Math.cos((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+                playerPosX = mouseX.toFloat()
+                playerPosY = mouseY + (if (rndBit and 10 == 0) 1 else -1) *
+                        moveScale * Math.sin(timer.div(slowdown)).toFloat()
 
+                pollPosition()
                 proceedToNextStage()
 
             }
             else if (runStage == 3) {
-                // TODO lissajous
-                playerPosX += (if (rndBit and 1 == 0) 1 else -1) *
-                        moveScale * Math.sin((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
-                playerPosY += (if (rndBit and 1 == 0) 1 else -1) *
-                        moveScale * Math.cos((timer - runTimes[runStage]).toDouble() / slownessFactor).toFloat()
+                playerPosX = mouseX + (if (rndBit and 100 == 0) 1 else -1) *
+                        moveScale * Math.sin(1.0 * timer.div(slowdown)).toFloat()
+                playerPosY = mouseY + (if (rndBit and 1000 == 0) 1 else -1) *
+                        moveScale * Math.sin(2.0 * timer.div(slowdown)).toFloat()
 
+                pollPosition()
                 proceedToNextStage()
             }
 
+            // log the shits
+            if (runStage in 1..3) {
+
+            }
 
 
+            dataCaptureTimer += delta
             timer += delta
         }
 
@@ -218,24 +278,26 @@ object TaskMain : Screen {
         ditherShader.dispose()
     }
 
-    class ConflictInputProcessor : InputProcessor {
-        private var oldMouseX = -2
-        private var oldMouseY = -2
+    class ConflictInputProcessor(val conflict: TaskMain) : InputProcessor {
 
         override fun touchUp(p0: Int, p1: Int, p2: Int, p3: Int): Boolean {
             return false
         }
 
         override fun mouseMoved(screenX: Int, screenY: Int): Boolean {
+
             if (runStage > 0) {
-                if (oldMouseX == -2) oldMouseX = screenX // init, -1 is an placeholder value
-                if (oldMouseY == -2) oldMouseY = screenY // init, -1 is an placeholder value
+                if (runStage != 3) {
+                    conflict.mouseX = screenX
+                    conflict.mouseY = Gdx.graphics.height - screenY // flip
+                }
+                else {
+                    val realMouseX = screenX
+                    val realMouseY = Gdx.graphics.height - screenY // flip
 
-                playerPosX -= (oldMouseX - screenX).toFloat()
-                playerPosY += (oldMouseY - screenY).toFloat()
-
-                oldMouseX = screenX
-                oldMouseY = screenY
+                    conflict.mouseX = (realMouseX + realMouseY) / 2
+                    conflict.mouseY = conflict.mouseX
+                }
             }
 
             return true
@@ -266,7 +328,9 @@ object TaskMain : Screen {
         }
 
         override fun touchDown(x: Int, y: Int, pointer: Int, button: Int): Boolean {
-            if (runStage == 0) runStage = 1
+            if (runStage == 0){
+                conflict.proceedToNextStage()
+            }
 
             // return to main menu
             else if (runStage == RUNSTAGE_RESULT && y >= Gdx.graphics.height - 40) {
@@ -291,4 +355,4 @@ inline fun ShapeRenderer.inUse(action: (ShapeRenderer) -> Unit) {
     this.end()
 }
 
-data class ControlDataPoints(val x: Float, val y: Float)
+data class ControlDataPoints(val x: Float, val y: Float, val stage: Int)

@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49cfae80-6ea1-4be5-b6ad-d18407a579cc" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/net/torvald/trackit/TaskMain.kt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/net/torvald/trackit/TrackIt.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" afterPath="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" afterPath="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,61 +20,35 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <splitter split-orientation="horizontal" split-proportion="0.5">
-            <split-first>
-              <leaf>
-                <file leaf-file-name="TaskMain.kt" pinned="false" current-in-tab="true">
-                  <entry file="file://$PROJECT_DIR$/src/net/torvald/trackit/TaskMain.kt">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="495">
-                        <caret line="388" column="9" lean-forward="false" selection-start-line="388" selection-start-column="9" selection-end-line="388" selection-end-column="9" />
-                        <folding />
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-              </leaf>
-            </split-first>
-            <split-second>
-              <leaf>
-                <file leaf-file-name="TaskMain.kt" pinned="false" current-in-tab="true">
-                  <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
-                    <provider selected="true" editor-type-id="text-editor">
-                      <state relative-caret-position="541">
-                        <caret line="178" column="32" lean-forward="true" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
-                        <folding>
-                          <element signature="e#30#437#0" expanded="true" />
-                        </folding>
-                      </state>
-                    </provider>
-                  </entry>
-                </file>
-              </leaf>
-            </split-second>
-          </splitter>
+          <leaf>
+            <file leaf-file-name="TaskMain.kt" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="1755">
+                    <caret line="189" column="69" lean-forward="true" selection-start-line="189" selection-start-column="69" selection-end-line="189" selection-end-column="69" />
+                    <folding>
+                      <element signature="e#30#473#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
         </state>
       </content>
     </window>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TrackIt.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/torvald/trackit/TrackIt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="14" column="2" lean-forward="false" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Conflict.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/Conflict.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="130">
+              <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1269#1297#0" expanded="true" />
+                <element signature="e#1269#1297#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -87,12 +64,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/config.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="52">
-              <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+              <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Lang.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="698">
+              <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+              <folding>
+                <element signature="e#39#157#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,6 +100,8 @@
     <findStrings>
       <find>2017</find>
       <find>pause</find>
+      <find>ControlDataPoints</find>
+      <find>resetInputP</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -132,6 +123,7 @@
         <option value="$PROJECT_DIR$/assets/dither.frag" />
         <option value="$PROJECT_DIR$/assets/config.txt" />
         <option value="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
+        <option value="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" />
       </list>
     </option>
   </component>
@@ -250,13 +242,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="torvald" type="462c0819:PsiDirectoryNode" />
               <item name="conflict" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ConflictDemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ConflictDemo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="torvald" type="462c0819:PsiDirectoryNode" />
-              <item name="trackit" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -403,7 +388,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1975" y="-1" width="964" height="1207" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -415,12 +399,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22128852" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22128852" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -453,16 +437,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/Conflict.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/dither.frag">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="845">
@@ -471,29 +445,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/torvald/trackit/TaskMain.kt">
+    <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="388" column="9" lean-forward="false" selection-start-line="388" selection-start-column="9" selection-end-line="388" selection-end-column="9" />
-          <folding />
+        <state relative-caret-position="1755">
+          <caret line="189" column="69" lean-forward="true" selection-start-line="189" selection-start-column="69" selection-end-line="189" selection-end-column="69" />
+          <folding>
+            <element signature="e#30#473#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
+    <entry file="file://$PROJECT_DIR$/src/net/torvald/trackit/TaskMain.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="178" column="32" lean-forward="true" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
-          <folding>
-            <element signature="e#30#437#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="470">
+          <caret line="299" column="48" lean-forward="false" selection-start-line="299" selection-start-column="48" selection-end-line="299" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/config.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
-          <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/Conflict.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1269#1297#0" expanded="true" />
+            <element signature="e#1269#1297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="698">
+          <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+          <folding>
+            <element signature="e#39#157#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

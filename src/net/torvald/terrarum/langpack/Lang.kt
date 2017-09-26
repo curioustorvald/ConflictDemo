@@ -1,7 +1,7 @@
 package net.torvald.terrarum.langpack
 
 import net.torvald.terrarum.utils.JsonFetcher
-import net.torvald.trackit.TrackIt
+import net.torvald.conflict.Conflict
 import java.io.*
 import java.util.*
 
@@ -99,7 +99,7 @@ object Lang {
         fun fallback(): String = langpack["${key}_$FALLBACK_LANG_CODE"] ?: "$$key"
 
 
-        val ret = langpack["${key}_${TrackIt.sysLang}"]
+        val ret = langpack["${key}_${Conflict.sysLang}"]
         val ret2 = if (ret.isNullOrEmpty()) fallback() else ret!!
 
         return ret2.capitalize()
