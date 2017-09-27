@@ -193,7 +193,14 @@ object TaskMain : Screen {
 
 
             batch.inUse {
+                batch.color = Color(0xc0c0c0ff.toInt())
+                font.draw(batch, " Legend:", 20f, Gdx.graphics.height - 40f)
+
+                batch.color = Color.RED
+                font.draw(batch, "- Conflict", 20f, Gdx.graphics.height - 40f - 40f)
+
                 batch.color = Color(0x00ff55ff)
+                font.draw(batch, "- Pre-conflict", 20f, Gdx.graphics.height - 40f - 20f)
 
                 val fontWidth = font.getWidth(Lang["MENU_LABEL_RETURN_MAIN"]).ushr(1).shl(1) // ensure even-ness (as in even number)
                 font.draw(batch, Lang["MENU_LABEL_RETURN_MAIN"], Gdx.graphics.width.minus(fontWidth) / 2f, 10f)

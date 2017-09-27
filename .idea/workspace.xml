@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49cfae80-6ea1-4be5-b6ad-d18407a579cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/net/torvald/trackit/TaskMain.kt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/net/torvald/trackit/TrackIt.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" afterPath="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" afterPath="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +20,8 @@
             <file leaf-file-name="TaskMain.kt" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1755">
-                    <caret line="189" column="69" lean-forward="true" selection-start-line="189" selection-start-column="69" selection-end-line="189" selection-end-column="69" />
+                  <state relative-caret-position="637">
+                    <caret line="196" column="35" lean-forward="true" selection-start-line="196" selection-start-column="35" selection-end-line="196" selection-end-column="35" />
                     <folding>
                       <element signature="e#30#473#0" expanded="true" />
                     </folding>
@@ -122,8 +118,8 @@
         <option value="$PROJECT_DIR$/src/net/torvald/conflict/Conflict.java" />
         <option value="$PROJECT_DIR$/assets/dither.frag" />
         <option value="$PROJECT_DIR$/assets/config.txt" />
-        <option value="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
         <option value="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" />
+        <option value="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
       </list>
     </option>
   </component>
@@ -388,6 +384,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1975" y="-1" width="964" height="1207" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -445,16 +442,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1755">
-          <caret line="189" column="69" lean-forward="true" selection-start-line="189" selection-start-column="69" selection-end-line="189" selection-end-column="69" />
-          <folding>
-            <element signature="e#30#473#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/torvald/trackit/TaskMain.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="470">
@@ -489,6 +476,16 @@
           <caret line="93" column="13" lean-forward="true" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
           <folding>
             <element signature="e#39#157#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="196" column="35" lean-forward="true" selection-start-line="196" selection-start-column="35" selection-end-line="196" selection-end-column="35" />
+          <folding>
+            <element signature="e#30#473#0" expanded="true" />
           </folding>
         </state>
       </provider>
