@@ -42,7 +42,6 @@ object TaskMain : Screen {
 
 
     private lateinit var font: GameFontBase
-    private lateinit var ditherShader: ShaderProgram
 
     private lateinit var fullscreenQuad: Mesh
 
@@ -90,14 +89,6 @@ object TaskMain : Screen {
         Gdx.input.inputProcessor = ConflictInputProcessor(this)
 
         font = GameFontBase("assets/fonts")
-
-        ditherShader = ShaderProgram(Gdx.files.internal("assets/dither.vert"), Gdx.files.internal("assets/dither.frag"))
-
-
-        if (!ditherShader.isCompiled) {
-            Gdx.app.log("shaderBayer", ditherShader.log)
-            System.exit(1)
-        }
 
 
         fullscreenQuad = Mesh(
@@ -208,24 +199,21 @@ object TaskMain : Screen {
         }
         // TASK mode
         else {
+            shapeRenderer.inUse {
+                //draw sky
+                shapeRenderer.rect(0f, 0f, halfW * 2, halfH * 2, gradBottomCol, gradBottomCol, gradTopCol, gradTopCol)
 
-            ditherShader.begin()
-            ditherShader.setUniformMatrix("u_projTrans", batch.projectionMatrix)
-            ditherShader.setUniformf("bottomColor", gradTopCol.r, gradTopCol.g, gradTopCol.b)
-            ditherShader.setUniformf("topColor", gradBottomCol.r, gradBottomCol.g, gradBottomCol.b)
-            ditherShader.setUniformf("parallax", playerPosY / Gdx.graphics.height * 2f - 1f) // -1 .. 1
-            ditherShader.setUniformf("parallax_size", 0.33f)//0.14f)
-            fullscreenQuad.render(ditherShader, GL20.GL_TRIANGLES)
-            ditherShader.end()
+                // draw lines
+                shapeRenderer.color = Color(0x404040ff)
+                shapeRenderer.rect(halfW, 0f, 1f, halfH * 2)
+                shapeRenderer.rect(0f, halfH, halfW * 2, 1f)
+            }
 
-
-            Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0)
 
             batch.inUse {
                 // draw objects
                 batch.draw(playerTex, (playerPosX - playerTex.width / 2), (playerPosY - playerTex.height / 2))
             }
-
 
             // UPDATE
             if (runStage == 1) {
@@ -281,8 +269,6 @@ object TaskMain : Screen {
         playerTex.dispose()
         batch.dispose()
         shapeRenderer.dispose()
-
-        ditherShader.dispose()
     }
 
     class ConflictInputProcessor(val conflict: TaskMain) : InputProcessor {
