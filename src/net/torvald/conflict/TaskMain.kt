@@ -38,7 +38,8 @@ object TaskMain : Screen {
     private var timer = 0f
 
 
-    private val moveScale: Float; get() = Gdx.graphics.height / 9f
+    private val moveScale: Float; get() = Gdx.graphics.height / 4f
+    private val moveScaleForXY: Float; get() = Gdx.graphics.height / 9f
 
 
     private lateinit var font: GameFontBase
@@ -235,9 +236,9 @@ object TaskMain : Screen {
             }
             else if (runStage == 3) {
                 playerPosX = mouseX + (if (rndBit and 100 == 0) 1 else -1) *
-                        moveScale * Math.sin(1.0 * timer.div(slowdown)).toFloat()
+                        moveScaleForXY * Math.sin(1.0 * timer.div(slowdown)).toFloat()
                 playerPosY = mouseY + (if (rndBit and 1000 == 0) 1 else -1) *
-                        moveScale * Math.sin(2.0 * timer.div(slowdown)).toFloat()
+                        moveScaleForXY * Math.sin(2.0 * timer.div(slowdown)).toFloat()
 
                 pollPosition()
                 proceedToNextStage()

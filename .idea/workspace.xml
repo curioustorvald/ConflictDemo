@@ -7,10 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49cfae80-6ea1-4be5-b6ad-d18407a579cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dither.frag" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dither.vert" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/config.txt" afterPath="$PROJECT_DIR$/assets/config.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" afterPath="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +25,8 @@
             <file leaf-file-name="TaskMain.kt" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="715">
-                    <caret line="202" column="26" lean-forward="true" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
+                  <state relative-caret-position="304">
+                    <caret line="198" column="13" lean-forward="true" selection-start-line="198" selection-start-column="13" selection-end-line="198" selection-end-column="13" />
                     <folding>
                       <element signature="e#30#473#0" expanded="true" />
                     </folding>
@@ -47,8 +44,8 @@
       <file leaf-file-name="Conflict.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/Conflict.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+            <state relative-caret-position="325">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,8 +112,8 @@
         <option value="$PROJECT_DIR$/assets/dither.frag" />
         <option value="$PROJECT_DIR$/src/net/torvald/terrarum/langpack/Lang.kt" />
         <option value="$PROJECT_DIR$/assets/dither.vert" />
-        <option value="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
         <option value="$PROJECT_DIR$/assets/config.txt" />
+        <option value="$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt" />
       </list>
     </option>
   </component>
@@ -547,8 +544,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/TaskMain.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="715">
-          <caret line="202" column="26" lean-forward="true" selection-start-line="202" selection-start-column="26" selection-end-line="202" selection-end-column="26" />
+        <state relative-caret-position="304">
+          <caret line="198" column="13" lean-forward="true" selection-start-line="198" selection-start-column="13" selection-end-line="198" selection-end-column="13" />
           <folding>
             <element signature="e#30#473#0" expanded="true" />
           </folding>
@@ -557,8 +554,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/torvald/conflict/Conflict.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        <state relative-caret-position="325">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
